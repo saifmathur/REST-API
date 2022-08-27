@@ -38,7 +38,7 @@ app.get('/api/courses/:id', (req, res)=>{
 })
 
 //POST 
-api.post('/api/courses', (req,res)=>{
+app.post('/api/courses', (req,res)=>{
     const courseObj = {
         id: courses.length+1,
         courseName: req.body.name
