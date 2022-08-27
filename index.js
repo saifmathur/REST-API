@@ -21,11 +21,19 @@ const courses = [
     courseName: "Math",
     id: 4,
   },
+  {
+    courseName: "A",
+    id: 4,
+  },
 ];
 
-app.get('/', (req, res)=>{
-    res.send('hello world')
-})
+app.get("/api/courses/", (req, res) => {
+    if(req.query.sortBy == 'name'){
+        res.send(courses.sort())
+    }
+    else{res.send(courses)}
+  
+});
 
 app.get('/api/courses/:id', (req, res)=>{
     let fetchCourse =  courses.find(c => c.id === parseInt(req.params.id));
@@ -36,6 +44,8 @@ app.get('/api/courses/:id', (req, res)=>{
         res.send(fetchCourse)
     }
 })
+
+
 
 //POST 
 app.post('/api/courses', (req,res)=>{
